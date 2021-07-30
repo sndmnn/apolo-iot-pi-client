@@ -1,6 +1,6 @@
 import Gpio from 'onoff';
 
-class LED {
+export default class LED {
   constructor(pin) {
     this.gpio = new Gpio(pin, 'out');
   }
@@ -9,5 +9,3 @@ class LED {
     this.gpio.write(binValue);
   }
 }
-
-module.exports = LED;

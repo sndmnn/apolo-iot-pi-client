@@ -2,7 +2,7 @@ import { promises } from 'node-dht-sensor';
 
 const dht = promises;
 
-class TemperatureSensor {
+export default class TemperatureSensor {
   constructor(type, pin) {
     this.type = type;
     this.pin = pin;
@@ -12,5 +12,3 @@ class TemperatureSensor {
     return dht.read(this.type, this.pin);
   }
 }
-
-module.exports = TemperatureSensor;
