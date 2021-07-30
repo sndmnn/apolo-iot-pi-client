@@ -11,5 +11,11 @@
         "ecmaVersion": 12
     },
     "rules": {
+        "import/extensions": [
+            "warning",
+            {
+                "js": "always"
+            }
+        ]
     }
 }
