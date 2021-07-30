@@ -1,5 +1,5 @@
-import Socket from './web/Socket';
-import TemperatureSensor from './devices/TemperatureSensor';
+import Socket from './web/Socket.js';
+import TemperatureSensor from './devices/TemperatureSensor.js';
 
 const client = new Socket('http://10.0.0.124');
 
