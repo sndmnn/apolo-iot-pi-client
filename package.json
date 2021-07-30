@@ -5,6 +5,7 @@
   "repository": "git@github.com:sndmnn/apolo-iot-pi-client.git",
   "author": "Henrique Cotta",
   "license": "MIT",
+  "type": "module",
   "dependencies": {
     "node-dht-sensor": "^0.4.3",
     "onoff": "^6.0.3",
