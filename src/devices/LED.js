@@ -1,4 +1,4 @@
-import Gpio from 'onoff';
+import { Gpio } from 'onoff';
 
 export default class LED {
   constructor(pin) {
