@@ -12,7 +12,7 @@
     },
     "rules": {
         "import/extensions": [
-            "warning",
+            1,
             {
                 "js": "always"
             }
