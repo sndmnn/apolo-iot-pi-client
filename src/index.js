@@ -10,22 +10,47 @@ const led1 = new LED(18);
 const led2 = new LED(17);
 
 client.listen('connect', () => {
-  client.shout('registration', {
+  client.shout('devices-registration', {
     description: 'Raspberry Pi Client',
     deviceList: [
       {
         type: 'led',
         description: 'LED 1',
+	room: 'Quarto',
       },
       {
         type: 'led',
         description: 'LED 2',
+	room: 'Quarto',
       },
       {
         type: 'temperature',
         description: 'DHT 11',
+        room: 'Quarto',
       },
     ],
+  });
+});
+
+const descriptionToInstance = {
+	'LED 1': led1,
+	'LED 2': led2,
+};
+
+client.listen('register', (devices) => {
+  devices.forEach((device) => {
+    if (device.deviceType === 'led') {
+      client.listen(device.communicationEvent, (state) => {
+        descriptionToInstance[device.deviceDescription]
+		.write(Number(state.state));
+     });
+    }
+    else if (device.deviceType === 'temperature') {
+      setInterval(async () => {
+        const temp = await tempSensor.read();
+        client.shout(device.communicationEvent, temp);
+      }, 5000);
+    }
   });
 });
 
