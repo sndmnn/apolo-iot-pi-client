@@ -9,6 +9,26 @@ const tempSensor = new TemperatureSensor(11, 4);
 const led1 = new LED(18);
 const led2 = new LED(17);
 
+client.listen('connect', () => {
+  client.shout('registration', {
+    description: 'Raspberry Pi Client',
+    deviceList: [
+      {
+        type: 'led',
+        description: 'LED 1',
+      },
+      {
+        type: 'led',
+        description: 'LED 2',
+      },
+      {
+        type: 'temperature',
+        description: 'DHT 11',
+      },
+    ],
+  });
+});
+
 setInterval(async () => {
   const temp = await tempSensor.read();
 
